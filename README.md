@@ -1,8 +1,6 @@
 # Faraday::Interval
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/faraday/interval`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Middleware to request interval by second.
 
 ## Installation
 
@@ -22,7 +20,14 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require 'faraday-interval'
+
+connection = Faraday.new 'https://example.com/api' do |conn|
+  conn.request :interval, second: 3600 / 300 # 300 API call limit per hour
+  conn.adapter Faraday.default_adapter
+end
+```
 
 ## Development
 
@@ -32,7 +37,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/faraday-interval.
+Bug reports and pull requests are welcome on GitHub at https://github.com/kei-s/faraday-interval.
 
 
 ## License
